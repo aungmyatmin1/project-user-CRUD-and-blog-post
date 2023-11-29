@@ -1,0 +1,17 @@
+<%- include('include/header') %>
+<h2 class="page-title"><%= title %></h2>
+<div class="login-form">
+    <form action="/login/new" method="post">
+        <div class="user-input"><input type="email" name="emailInput" placeholder="Email"></div>    
+        <div class="pass-input"><input type="password" name="pwd" placeholder="Password"></div>
+        <div align="center"><button type="submit" class="btn btn-primary">Create A Account</button></div>
+    </form>
+</div> 
+
+<% if(error != null){ %>
+    <div class="login-error"><p><%= error %></p></div>
+
+<% } %>
+
+<p align="center"><a href="/login">Already Account Login Here</a></p>
+<%- include('include/footer') %>

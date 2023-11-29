@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title><%= title %></title>
+    <link rel='stylesheet' href='/stylesheets/style.css' />
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
+    <script>
+        function showAddNewPost(){
+            var newUser = document.getElementById('new-user');
+            newUser.style.display = "block";
+        }
+    </script>
+    </head>
+  <body>
+    
+    <div class="container d-flex justify-content-center">
+        
+        <div class="card mt-5 p-4">
+            <div class="header-img">
+                <div class="menu-icon">
+                    <div class="dropdown">
+                        <a href="#" class="dropbtn"><img src="/images/pngtree-menu-vector-icon-png-image_3791388.jpeg"></a>
+                        <div class="dropdown-content">
+                            <ul>
+                                <% if(!loggedIn) { %>
+                                <li><a href="/login">Login</a></li> 
+                                <% }  else { %>
+                                
+                                <li><a href="#" onclick="showAddNewPost(); return false">Add New Post</a></li>
+                                <li><a href="/logout">Log Out</a></li>
+                                <% } %>
+                                <li><a href="/">HOME</a></li>
+
+                            </ul>
+                        </div>
+                    </div> 
+                </div>
+                
+            </div>
+        
+        
+            <% if(loggedIn) { %>
+            <div id="new-user">
+                <form action="/blog/new" method="post">
+                  
+                  <input type="text" name="title" placeholder="Post Title"><br>
+                  <textarea type type="text" name="body" placeholder="Post body"></textarea><br>
+                  
+                  <button type="submit">Post</button>
+            
+                </form>
+              </div>
+            <% } %>

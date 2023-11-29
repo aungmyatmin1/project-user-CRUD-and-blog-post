@@ -1,0 +1,20 @@
+<%- include('include/header') %>
+
+<% if (error != '') { %>
+    <%= error %>
+<% } else { %>
+<h2 class="page-title"><%= title %></h2>
+<form action="/blog/save" method="POST">
+    <div class="menu-edit">
+        <input type="text" name="title"  value="<%= element[0].title %>"><br>
+        <textarea type type="text" name="body" ><%= element[0].body %></textarea><br>
+        
+    
+            <button type="submit" class="btn btn-primary">Save</button>
+            <button type="button" class="btn btn-primary" onclick="javascript:location.href='/';">Cancel</button>
+            <input type="hidden" name="updateid" value="<%= element[0]._id %>">
+        </div>
+    </div>
+</form>
+<% } %>
+<%- include('include/footer') %>
